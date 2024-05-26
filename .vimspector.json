@@ -1,0 +1,91 @@
+{
+  "configurations": {
+    "launchCore": {
+      "adapter": "CodeLLDB",
+      "configuration": {
+        "request": "launch",
+        "program": "${workspaceRoot}/packages/core/target/debug/core"
+      }
+    },
+    "attachCore": {
+      "adapter": "CodeLLDB",
+      "filetypes": [
+        "rust",
+        "c",
+        "cpp",
+        "jai"
+      ],
+      "configuration": {
+        "request": "attach",
+        "program": "${workspaceRoot}/packages/core/${fileBasenameNoExtension}",
+        "PID": "${PID}"
+      }
+    },
+    "attach": {
+      "adapter": "js-debug",
+      "configuration": {
+        "request": "attach",
+        "program": "npm run -w app dev:remix",
+        "pid": "${PickProcess(\"npm run dev:remix\")}"
+      }
+    },
+    "run": {
+      "adapter": "js-debug",
+      "configuration": {
+        "request": "launch",
+        "stopOnEntry": true,
+        "console": "integratedTerminal",
+        "program": "npm run -w app dev:remix",
+        "cwd": "${workspaceFolder}",
+        "type": "pwa-node"
+      }
+    },
+    "launchServer": {
+      "adapter": "js-debug",
+      "configuration": {
+        "type": "node-terminal",
+        "request": "launch",
+        "name": "Launch Server",
+        "command": "npm run dev:remix",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "sourceMapPathOverrides": {
+          "route:*": "*"
+        },
+        "outFiles": [
+          "${workspaceFolder}/build/**/*.js"
+        ]
+      }
+    },
+    "launchClient": {
+      "adapter": "js-debug",
+      "configuration": {
+        "name": "Launch Client",
+        "request": "launch",
+        "type": "msedge",
+        "url": "http://localhost:3000",
+        "webRoot": "${workspaceFolder}/packages/app/public/build"
+      }
+    },
+    "chromium": {
+      "adapter": "chrome",
+      "configuration": {
+        "request": "launch",
+        "url": "http://localhost:3000/",
+        "webRoot": "${workspaceRoot}/www",
+        "reAttach": true,
+        "runtimeExecutable": "/usr/bin/chromium"
+      }
+    },
+    "firefox": {
+      "adapter": "firefox",
+      "configuration": {
+        "request": "launch",
+        "url": "http://localhost:3000/",
+        "webRoot": "${workspaceRoot}/www",
+        "reAttach": true
+      }
+    }
+  }
+}

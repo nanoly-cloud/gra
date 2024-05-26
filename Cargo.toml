@@ -1,0 +1,50 @@
+[package]
+name = "gra"
+version = "0.1.0"
+edition = "2021"
+license = "AGPL-3.0"
+default-run = "gra-cli"
+
+[dependencies]
+anyhow = "1.0.86"
+async-std = { version = "1.12.0", features = ["async-attributes", "async-process", "attributes", "futures-core"] }
+async-trait = "0.1.80"
+blake3 = { version = "1.5.1", features = ["serde", "zeroize", "digest", "mmap", "traits-preview", "rayon"] }
+bytes = { version = "1.6.0", features = ["serde"] }
+chrono = { version = "0.4.38", features = ["serde"] }
+ciborium = "0.2.2"
+ciborium-io = "0.2.2"
+clap = { version = "4.5.4", features = ["cargo", "derive", "env"] }
+crossterm = "0.27.0"
+derive_more = "0.99.18"
+futures = { version = "0.3.30", features = ["futures-executor", "bilock", "io-compat", "thread-pool"] }
+futures-timer = "3.0.3"
+hashbrown = { version = "0.14.5", features = ["rayon", "serde"] }
+hex = { version = "0.4.3", features = ["serde"] }
+lazy_static = "1.4.0"
+libc = "0.2.155"
+libp2p = { git = "https://github.com/libp2p/rust-libp2p.git", features = ["full"] }
+multihash = "0.19.1"
+rand = "0.8.5"
+ratatui = { version = "0.26.3", features = ["serde"] }
+serde = { version = "1.0.202", features = ["derive"] }
+serde_json = "1.0.117"
+thiserror = "1.0.61"
+tokio = { version = "1.37.0", features = ["full"] }
+tracing = "0.1.40"
+tracing-forest = { version = "0.1.6", optional = true }
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+zerocopy = { version = "0.7.34", features = ["derive"] }
+
+
+[[bin]]
+name = "gra-cli"
+path = "src/bin/cli.rs"
+
+[lib]
+name = "gra"
+path = "src/lib.rs"
+
+[features]
+default = ["tracing-forest"]
+tracing-forest = ["dep:tracing-forest"]

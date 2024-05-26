@@ -1,0 +1,21 @@
+{
+  "tsserver.useLocalTsdk": true,
+  "tsserver.tsdk": "${workspaceFolder}/node_modules/typescript/lib",
+  "[rust]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[typescript]": {
+    "coc.preferences.formatOnSave": true
+  },
+//   "rust-analyzer.check.overrideCommand": [
+//    "cargo",
+//    "component",
+//    "check",
+//    "--workspace",
+//    "--all-targets",
+//    "--message-format=json"
+//  ],
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true
+}
